@@ -1,0 +1,27 @@
+const posts = require('../../fixtures/posts.json');
+
+describe('React App', () => {
+    beforeEach(() => {
+        cy.intercept('GET', '/api/posts', posts).as('getPosts');
+        cy.visit('/');
+    });
+
+    it('displays intro text', () => {
+        cy.contains('A short Naration of Lorem Ipsum').should('be.visible');
+    });
+
+    it('displays posts fetched from API', () => {
+        cy.wait('@getPosts');
+        cy.get('li').should('have.length', posts.length);
+    });
+
+    it('should display loading state by default', () => {
+        cy.get('h4').should('contain', 'Loading...').should('be.visible');
+    });
+
+    it('should display posts after fetching from API', () => {
+        cy.wait('@getPosts');
+        cy.get('h4').should('not.exist');
+        cy.get('li').should('have.length', posts.length);
+    });
+});

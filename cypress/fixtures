@@ -1,0 +1,14 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "A short Naration of Lorem Ipsum",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "id": 2,
+      "title": "Another Post Title",
+      "body": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    }
+  ]
+}
